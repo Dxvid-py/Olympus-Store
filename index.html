@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympus Store | Mayoristas de Calzado Premium</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/fYRNP4br/Gemini-Generated-Image-hvy2mehvy2mehvy2-removebg-preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           1. VARIABLES Y RESET
+           ========================================================================== */
+        :root {
+            --primary: #f7e300;
+            --primary-hover: #e0ce00;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --dark-card: #141414;
+            --gray: #888888;
+            --light-gray: #222222;
+            --white: #ffffff;
+            --border: #2a2a2a;
+            --danger: #ff3b30;
+            --success: #34c759;
+            --font-sans: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Bebas Neue', 'Impact', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.6);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--white);
+            background-color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background image with transparency *
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://i.ibb.co/M5NGprTk/imagen-2026-04-14-202705374.png') center/cover no-repeat;
+            opacity: 0.12;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body > * { position: relative; z-index: 1; }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+        /* ==========================================================================
+           2. LIGHTNING BOLT DECORATIVE ELEMENTS
+           ========================================================================== */
+        .bolt-decoration {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0.08;
+            font-family: var(--font-display);
+            font-size: 20vw;
+            pointer-events: none;
+            z-index: 0;
+            animation: boltPulse 4s ease-in-out infinite;
+        }
+        @keyframes boltPulse {
+            0%, 100% { opacity: 0.06; transform: scale(1); }
+            50% { opacity: 0.12; transform: scale(1.05); }
+        }
+        @keyframes boltFloat {
+            0%, 100% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+        }
+        .bolt-float { animation: boltFloat 3s ease-in-out infinite; }
+
+        /* Loading bolt animation */
+        .bolt-loader {
+            display: inline-block;
+            animation: boltSpin 0.8s ease-in-out infinite;
+        }
+        @keyframes boltSpin {
+            0% { transform: scale(1) rotate(0deg); color: var(--primary); }
+            50% { transform: scale(1.3) rotate(10deg); color: #fff; }
+            100% { transform: scale(1) rotate(0deg); color: var(--primary); }
+        }
+
+        /* ==========================================================================
+           3. HEADER
+           ========================================================================== */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(247,227,0,0.15);
+            transition: var(--transition);
+        }
+        .header.scrolled { padding: 5px 0; box-shadow: 0 4px 30px rgba(247,227,0,0.08); }
+
+        .nav-container {
+            max-width: 1400px; margin: 0 auto; padding: 12px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo img { height: 50px; transition: var(--transition); filter: drop-shadow(0 0 8px rgba(247,227,0,0.3)); }
+        .header.scrolled .logo img { height: 38px; }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            font-weight: 700; font-size: 13px;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: #ccc; position: relative; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--primary); transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .header-actions { display: flex; align-items: center; gap: 16px; }
+
+        .search-bar-header {
+            display: flex; align-items: center;
+            background: var(--dark-gray); border: 1px solid var(--border);
+            border-radius: var(--radius-full); padding: 8px 18px; gap: 10px;
+            transition: var(--transition);
+        }
+        .search-bar-header:focus-within { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(247,227,0,0.15); }
+        .search-bar-header input {
+            background: transparent; border: none; outline: none;
+            color: var(--white); font-size: 14px; font-family: var(--font-sans);
+            width: 180px;
+        }
+        .search-bar-header input::placeholder { color: var(--gray); }
+        .search-bar-header svg { color: var(--gray); flex-shrink: 0; }
+
+        .cart-toggle {
+            position: relative; display: flex; align-items: center; justify-content: center;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--dark-gray); border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .cart-toggle:hover { background: var(--primary); border-color: var(--primary); }
+        .cart-toggle:hover svg { stroke: var(--black); }
+
+        .cart-badge {
+            position: absolute; top: -6px; right: -6px;
+            background: var(--primary); color: var(--black);
+            font-size: 11px; font-weight: 900;
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--black);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding-top: 90px;
+            min-height: 100vh;
+            display: flex; align-items: center;
+            background: linear-gradient(160deg, #0a0a0a 0%, #111100 50%, #0a0a0a 100%);
+            position: relative; overflow: hidden;
+        }
+
+        .hero-bolt-bg {
+            position: absolute; top: -5%; left: -5%;
+            font-size: 80vw; color: var(--primary);
+            opacity: 0.025; font-family: var(--font-display);
+            line-height: 1; pointer-events: none; z-index: 0;
+            animation: heroBoltPulse 6s ease-in-out infinite;
+        }
+        @keyframes heroBoltPulse {
+            0%, 100% { opacity: 0.02; transform: scale(1); }
+            50% { opacity: 0.04; transform: scale(1.02); }
+        }
+
+        .hero-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 40px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; gap: 60px; z-index: 1; width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(247,227,0,0.1); border: 1px solid rgba(247,227,0,0.3);
+            color: var(--primary); padding: 6px 16px; border-radius: var(--radius-full);
+            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 24px; animation: fadeInUp 0.6s both;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 6rem; line-height: 0.92;
+            margin-bottom: 24px; letter-spacing: 2px;
+            animation: fadeInUp 0.6s 0.1s both;
+        }
+        .hero-content h1 .highlight {
+            color: var(--primary);
+            text-shadow: 0 0 40px rgba(247,227,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem; color: #aaa;
+            margin-bottom: 40px; max-width: 480px; line-height: 1.7;
+            animation: fadeInUp 0.6s 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex; gap: 16px; flex-wrap: wrap;
+            animation: fadeInUp 0.6s 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 16px 36px;
+            background: var(--primary); color: var(--black);
+            font-weight: 800; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 2px;
+            border-radius: var(--radius-full); transition: var(--transition);
+        }
+        .btn-primary:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(247,227,0,0.3); }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 16px 36px;
+            background: transparent; color: var(--white);
+            font-weight: 700; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 2px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+
+        /* Hero video floating card */
+        .hero-image { position: relative; display: flex; justify-content: center; }
+
+        .hero-video-card {
+            position: relative;
+            background: var(--dark-card);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(247,227,0,0.2);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(247,227,0,0.08);
+            animation: heroCardFloat 6s ease-in-out infinite;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        @keyframes heroCardFloat {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-20px) rotate(-1deg); }
+        }
+
+        .hero-video-card iframe, .hero-video-card video {
+            width: 100%; aspect-ratio: 16/9; display: block; border: none;
+        }
+
+        .hero-video-card-glow {
+            position: absolute; bottom: -30px; left: 50%;
+            transform: translateX(-50%);
+            width: 70%; height: 60px;
+            background: rgba(247,227,0,0.2);
+            filter: blur(30px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .bolt-badge {
+            position: absolute; top: -15px; right: -15px;
+            background: var(--primary); color: var(--black);
+            border-radius: 50%; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; font-family: var(--font-display);
+            box-shadow: 0 0 20px rgba(247,227,0,0.5);
+            z-index: 2;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(247,227,0,0.5); }
+            50% { box-shadow: 0 0 40px rgba(247,227,0,0.8); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================================================
+           5. BENEFITS STRIP
+           ========================================================================== */
+        .benefits {
+            background: var(--primary); color: var(--black);
+            padding: 18px 0; overflow: hidden;
+        }
+
+        .benefits-ticker {
+            display: flex; gap: 0;
+            animation: tickerScroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .benefit-item {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-weight: 800; font-size: 13px; text-transform: uppercase;
+            letter-spacing: 1px; padding: 0 40px; flex-shrink: 0;
+        }
+
+        /* ==========================================================================
+           6. BRAND CAROUSEL (Filtros visuales con imágenes circulares)
+           ========================================================================== */
+        .brands-section {
+            padding: 80px 40px 40px;
+            max-width: 1400px; margin: 0 auto;
+        }
+
+        .brands-label {
+            font-size: 13px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--primary); margin-bottom: 30px;
+        }
+
+        .brands-carousel-wrapper {
+            position: relative; overflow: hidden;
+        }
+
+        .brands-carousel {
+            display: flex; gap: 24px; overflow-x: auto;
+            scrollbar-width: none; scroll-behavior: smooth;
+            padding: 12px 0;
+        }
+        .brands-carousel::-webkit-scrollbar { display: none; }
+
+        .brand-circle-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            cursor: pointer; flex-shrink: 0; transition: var(--transition);
+        }
+        .brand-circle-btn:hover { transform: translateY(-5px); }
+        .brand-circle-btn.active .brand-circle-img-wrap { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(247,227,0,0.3), 0 10px 30px rgba(247,227,0,0.2); }
+        .brand-circle-btn.active .brand-circle-label { color: var(--primary); }
+
+        .brand-circle-img-wrap {
+            width: 90px; height: 90px; border-radius: 50%;
+            overflow: hidden; border: 3px solid transparent;
+            transition: var(--transition);
+            background: var(--dark-gray);
+            position: relative;
+        }
+
+        .brand-circle-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .brand-circle-label {
+            font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: #aaa; transition: color 0.3s;
+        }
+
+        .carousel-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 36px; height: 36px; background: var(--dark-gray);
+            border: 1px solid var(--border); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10; transition: var(--transition);
+            color: var(--white);
+        }
+        .carousel-nav:hover { background: var(--primary); color: var(--black); border-color: var(--primary); }
+        .carousel-nav.prev { left: -18px; }
+        .carousel-nav.next { right: -18px; }
+
+        /* ==========================================================================
+           7. CATÁLOGO Y FILTROS
+           ========================================================================== */
+        .store-section { padding: 60px 40px 100px; max-width: 1400px; margin: 0 auto; }
+
+        .section-header {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 40px; flex-wrap: wrap; gap: 20px;
+        }
+
+        .section-title { font-family: var(--font-display); font-size: 4rem; font-weight: 400; text-transform: uppercase; line-height: 1; letter-spacing: 2px; }
+        .section-subtitle { color: var(--gray); font-size: 1rem; margin-top: 8px; }
+
+        .filters-and-sort {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+        }
+
+        .sort-select {
+            background: var(--dark-gray); color: var(--white);
+            border: 1px solid var(--border); border-radius: var(--radius-full);
+            padding: 10px 20px; font-size: 13px; font-weight: 600;
+            font-family: var(--font-sans); cursor: pointer; transition: var(--transition);
+            appearance: none; padding-right: 36px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+        .sort-select:focus { outline: none; border-color: var(--primary); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            position: relative; cursor: pointer;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(247,227,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(247,227,0,0.05);
+        }
+
+        .product-image-wrapper {
+            position: relative; background: #111;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            padding: 40px 20px; overflow: hidden;
+            aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+        }
+        .product-image-wrapper::after {
+            content: '⚡'; position: absolute; bottom: -20px; right: -10px;
+            font-size: 100px; opacity: 0.04; pointer-events: none;
+            font-family: sans-serif; transition: var(--transition);
+        }
+        .product-card:hover .product-image-wrapper::after { opacity: 0.08; }
+
+        .product-img-main {
+            width: 80%; transition: var(--transition);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            z-index: 2;
+        }
+        .product-card:hover .product-img-main { transform: scale(1.1) rotate(-5deg); filter: drop-shadow(0 15px 25px rgba(247,227,0,0.15)); }
+
+        .product-badge {
+            position: absolute; top: 14px; left: 14px;
+            background: var(--primary); color: var(--black);
+            padding: 4px 12px; border-radius: var(--radius-full);
+            font-size: 11px; font-weight: 800; text-transform: uppercase; z-index: 3; letter-spacing: 1px;
+        }
+
+        .product-info { padding: 18px 20px 20px; }
+        .product-brand { font-size: 11px; color: var(--primary); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; margin-bottom: 5px; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--white); line-height: 1.3; }
+
+        .product-price-row { display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-size: 1.3rem; font-weight: 800; color: var(--white); }
+        .product-price-wholesale { font-size: 0.8rem; color: var(--primary); font-weight: 600; background: rgba(247,227,0,0.1); padding: 2px 10px; border-radius: 20px; }
+
+        .product-sold-tag { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray); margin-top: 8px; }
+
+        /* ==========================================================================
+           8. MODAL DE PRODUCTO
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            z-index: 2000; opacity: 0; visibility: hidden;
+            display: flex; justify-content: center; align-items: center;
+            transition: var(--transition);
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-content {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            width: 95%; max-width: 1100px; height: 85vh;
+            border-radius: var(--radius-lg); display: grid;
+            grid-template-columns: 1fr 1fr; overflow: hidden;
+            position: relative; transform: translateY(50px);
+            transition: var(--transition);
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+
+        .modal-close {
+            position: absolute; top: 18px; right: 18px;
+            width: 38px; height: 38px; background: rgba(255,255,255,0.08);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; z-index: 10; transition: var(--transition); color: var(--white);
+        }
+        .modal-close:hover { background: var(--primary); color: var(--black); }
+
+        .modal-gallery {
+            background: #0d0d0d; padding: 40px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border-right: 1px solid var(--border);
+        }
+        .modal-main-img { width: 90%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); margin-bottom: 24px; animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .modal-thumbs { display: flex; gap: 12px; }
+        .thumb-img {
+            width: 58px; height: 58px; background: var(--dark-gray); border-radius: var(--radius-sm);
+            padding: 5px; cursor: pointer; border: 2px solid transparent; transition: var(--transition);
+            object-fit: contain;
+        }
+        .thumb-img.active { border-color: var(--primary); }
+
+        .modal-info { padding: 40px; overflow-y: auto; }
+        .modal-info::-webkit-scrollbar { width: 4px; }
+        .modal-info::-webkit-scrollbar-thumb { background: var(--border); }
+        .modal-brand { color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; }
+        .modal-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; line-height: 1.05; margin: 8px 0 20px; letter-spacing: 1px; }
+
+        .price-comparison {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;
+        }
+        .price-box {
+            background: var(--dark-gray); border-radius: var(--radius-sm);
+            padding: 14px 18px; border: 1px solid var(--border);
+        }
+        .price-box.wholesale { border-color: rgba(247,227,0,0.4); background: rgba(247,227,0,0.06); }
+        .price-box-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 4px; }
+        .price-box-value { font-size: 1.4rem; font-weight: 800; }
+        .price-box.wholesale .price-box-value { color: var(--primary); }
+        .price-box-note { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+        .option-title { font-weight: 700; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
+        .option-title span { color: var(--gray); font-weight: 500; }
+
+        .size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 24px; }
+        .size-btn {
+            height: 46px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+            font-weight: 700; font-size: 15px; transition: var(--transition);
+            color: var(--white); background: var(--dark-gray);
+        }
+        .size-btn:hover:not(:disabled) { border-color: var(--primary); color: var(--primary); }
+        .size-btn.active { background: var(--primary); color: var(--black); border-color: var(--primary); }
+        .size-btn:disabled { background: #111; color: #333; cursor: not-allowed; text-decoration: line-through; }
+
+        .qty-wrapper {
+            display: flex; align-items: center; border: 1px solid var(--border);
+            border-radius: var(--radius-full); width: fit-content; padding: 4px; margin-bottom: 8px;
+            background: var(--dark-gray);
+        }
+        .qty-btn { width: 38px; height: 38px; border-radius: 50%; font-size: 18px; font-weight: 500; transition: var(--transition); color: var(--white); }
+        .qty-btn:hover { background: rgba(247,227,0,0.1); color: var(--primary); }
+        .qty-input { width: 50px; text-align: center; font-size: 18px; font-weight: 700; border: none; background: transparent; color: var(--white); font-family: var(--font-sans); }
+
+        .wholesale-notice { color: var(--primary); font-size: 12px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; opacity: 0.8; }
+
+        .btn-add-cart {
+            width: 100%; padding: 18px; background: var(--primary); color: var(--black);
+            font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+            border-radius: var(--radius-full); transition: var(--transition); font-family: var(--font-sans);
+        }
+        .btn-add-cart:hover:not(:disabled) { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,227,0,0.3); }
+        .btn-add-cart:disabled { opacity: 0.4; cursor: not-allowed; background: var(--gray); color: var(--black); }
+
+        /* ==========================================================================
+           9. CARRITO LATERAL
+           ========================================================================== */
+        .cart-sidebar {
+            position: fixed; top: 0; right: -500px; width: 100%; max-width: 460px; height: 100vh;
+            background: var(--dark-card); border-left: 1px solid var(--border);
+            z-index: 2001; box-shadow: var(--shadow-lg);
+            display: flex; flex-direction: column; transition: var(--transition);
+        }
+        .cart-sidebar.active { right: 0; }
+
+        .cart-header {
+            padding: 22px 28px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .cart-header h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: 1px; }
+        .close-cart { font-size: 22px; width: 38px; height: 38px; border-radius: 50%; background: var(--dark-gray); color: var(--white); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .close-cart:hover { background: var(--primary); color: var(--black); }
+
+        .cart-items { flex: 1; padding: 24px; overflow-y: auto; }
+        .cart-item { display: flex; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .cart-item-img { width: 75px; height: 75px; background: #111; border-radius: var(--radius-sm); padding: 8px; object-fit: contain; }
+        .cart-item-details { flex: 1; }
+        .cart-item-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; line-height: 1.2; color: var(--white); }
+        .cart-item-meta { color: var(--gray); font-size: 12px; margin-bottom: 8px; }
+        .cart-item-price { font-weight: 800; font-size: 15px; color: var(--primary); }
+        .cart-item-remove { color: var(--danger); font-size: 12px; font-weight: 600; cursor: pointer; background: none; border: none; font-family: var(--font-sans); }
+
+        /* Payment methods */
+        .payment-section {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+        }
+        .payment-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 10px; }
+        .payment-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .payment-btn {
+            background: var(--dark-gray); border: 2px solid var(--border);
+            border-radius: var(--radius-sm); padding: 10px 8px;
+            cursor: pointer; transition: var(--transition); text-align: center;
+            color: var(--white); font-family: var(--font-sans);
+        }
+        .payment-btn:hover, .payment-btn.active { border-color: var(--primary); background: rgba(247,227,0,0.06); }
+        .payment-btn .pm-name { font-size: 12px; font-weight: 700; display: block; margin-top: 4px; }
+        .payment-btn .pm-emoji { font-size: 18px; }
+
+        .cart-footer { padding: 20px 24px; background: var(--dark-gray); border-top: 1px solid var(--border); }
+        .cart-summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; color: var(--gray); font-size: 14px; }
+        .cart-summary-total { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.4rem; font-weight: 800; }
+        .cart-summary-total span:last-child { color: var(--primary); }
+
+        .delivery-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+        .delivery-option {
+            background: var(--dark-card); border: 2px solid var(--border); padding: 12px;
+            border-radius: var(--radius-sm); text-align: center; cursor: pointer; transition: var(--transition);
+        }
+        .delivery-option.active { border-color: var(--primary); }
+        .delivery-option h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+        .delivery-option p { font-size: 11px; color: var(--gray); }
+
+        .progress-bar-container { background: var(--border); height: 4px; border-radius: 2px; margin-bottom: 8px; overflow: hidden; }
+        .progress-bar { background: var(--primary); height: 100%; width: 0%; transition: width 0.4s; }
+        .progress-text { font-size: 12px; font-weight: 600; text-align: center; margin-bottom: 16px; color: var(--gray); }
+
+        .btn-whatsapp {
+            width: 100%; padding: 16px; background: #25D366; color: var(--white);
+            font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            border-radius: var(--radius-full); display: flex; justify-content: center; align-items: center; gap: 10px;
+            transition: var(--transition); font-family: var(--font-sans);
+        }
+        .btn-whatsapp:hover:not(:disabled) { background: #1ebd57; transform: translateY(-2px); }
+        .btn-whatsapp:disabled { background: #1a3a22; cursor: not-allowed; color: #555; }
+
+        /* ==========================================================================
+           10. MAPA Y WHATSAPP PREMIUM
+           ========================================================================== */
+        .location-section {
+            padding: 80px 40px;
+            max-width: 1400px; margin: 0 auto;
+        }
+
+        .location-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+            align-items: stretch;
+        }
+
+        .map-wrapper {
+            border-radius: var(--radius-lg); overflow: hidden;
+            border: 1px solid rgba(247,227,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative; min-height: 380px;
+        }
+        .map-wrapper iframe {
+            width: 100%; height: 100%; min-height: 380px; border: none; display: block;
+            filter: invert(90%) hue-rotate(180deg) saturate(0.5);
+        }
+
+        .location-info {
+            display: flex; flex-direction: column; justify-content: center; gap: 28px;
+        }
+
+        .location-info h2 { font-family: var(--font-display); font-size: 3.5rem; letter-spacing: 2px; line-height: 1; }
+        .location-info h2 span { color: var(--primary); }
+        .location-details { display: flex; flex-direction: column; gap: 14px; }
+        .location-detail-item { display: flex; align-items: flex-start; gap: 14px; }
+        .location-detail-icon {
+            width: 44px; height: 44px; background: rgba(247,227,0,0.1);
+            border: 1px solid rgba(247,227,0,0.2); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; flex-shrink: 0;
+        }
+        .location-detail-text { font-size: 14px; color: #aaa; line-height: 1.6; }
+        .location-detail-text strong { color: var(--white); display: block; font-size: 15px; margin-bottom: 2px; }
+
+        /* WhatsApp Premium Button */
+        .whatsapp-premium-btn {
+            display: flex; align-items: center; gap: 16px;
+            background: linear-gradient(135deg, #075E54, #128C7E);
+            border: 1px solid #25D366;
+            border-radius: var(--radius-md); padding: 20px 28px;
+            cursor: pointer; transition: var(--transition);
+            text-align: left; width: 100%; font-family: var(--font-sans);
+            color: var(--white);
+        }
+        .whatsapp-premium-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(37,211,102,0.2); background: linear-gradient(135deg, #128C7E, #25D366); }
+        .wp-icon { font-size: 38px; }
+        .wp-text-wrap {}
+        .wp-text-title { font-size: 16px; font-weight: 800; display: block; margin-bottom: 3px; }
+        .wp-text-sub { font-size: 12px; opacity: 0.8; }
+        .wp-arrow { margin-left: auto; font-size: 22px; }
+
+        /* ==========================================================================
+           11. FOOTER
+           ========================================================================== */
+        .footer { background: #050505; color: var(--white); padding: 70px 40px 30px; border-top: 1px solid var(--border); }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+
+        .footer-brand img { height: 52px; margin-bottom: 18px; }
+        .footer-brand p { color: var(--gray); font-size: 14px; margin-bottom: 18px; max-width: 280px; line-height: 1.7; }
+
+        .footer-title { font-size: 12px; font-weight: 800; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--gray); transition: var(--transition); font-size: 14px; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 24px; border-top: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; color: var(--gray); font-size: 13px; flex-wrap: wrap; gap: 10px; }
+
+        /* Toast */
+        #toast-container { position: fixed; bottom: 28px; left: 28px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+        .toast {
+            background: var(--dark-card); color: var(--white);
+            border: 1px solid rgba(247,227,0,0.3);
+            padding: 14px 22px; border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg); font-weight: 600; font-size: 14px;
+            animation: slideUp 0.3s forwards;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .toast::before { content: '⚡'; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p { margin: 0 auto 40px; }
+            .hero-buttons { justify-content: center; }
+            .hero-image { order: -1; }
+            .location-grid { grid-template-columns: 1fr; }
+            .modal-content { grid-template-columns: 1fr; height: 90vh; overflow-y: auto; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .search-bar-header { display: none; }
+            .section-title { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 4rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cart-sidebar { width: 100%; right: -100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://i.ibb.co/Hw37Z44/imagen-2026-04-14-022022200.png" alt="Olympus Store">
+            </a>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#ubicacion">Ubicación</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-bar-header">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="search-input" placeholder="Buscar producto..." oninput="searchProducts(this.value)">
+                </div>
+                <button class="cart-toggle" onclick="toggleCart()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-bolt-bg">⚡</div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">⚡ Mayoristas de Calzado Premium</div>
+                <h1>EL IMPERIO DEL<br><span class="highlight">CALZADO</span><br>MAYORISTA</h1>
+                <p>Distribución oficial de zapatillas urbanas y deportivas de alta gama. Emprende con el mejor margen de ganancia. Pedidos desde 5 pares.</p>
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn-primary">⚡ Ver Catálogo</a>
+                    <a href="#ubicacion" class="btn-secondary">📍 Encuéntranos</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-video-card">
+                    <div class="bolt-badge">⚡</div>
+                    <iframe
+                        src="https://www.kapwing.com/videos/69dee499a7234fb7146b5445"
+                        allowfullscreen
+                        allow="autoplay; fullscreen"
+                        title="Olympus Store Video"
+                        loading="lazy">
+                    </iframe>
+                    <div class="hero-video-card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS TICKER -->
+    <div class="benefits">
+        <div class="benefits-ticker" id="benefits-ticker">
+            <div class="benefit-item">⚡ Tienda Física Barranquilla</div>
+            <div class="benefit-item">👟 Calidad Premium Garantizada</div>
+            <div class="benefit-item">🚚 Envíos Nacionales</div>
+            <div class="benefit-item">💰 Precio Mayorista desde 5 pares</div>
+            <div class="benefit-item">⭐ Las mejores marcas</div>
+            <div class="benefit-item">🔥 Stock permanente</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="benefit-item">⚡ Tienda Física Barranquilla</div>
+            <div class="benefit-item">👟 Calidad Premium Garantizada</div>
+            <div class="benefit-item">🚚 Envíos Nacionales</div>
+            <div class="benefit-item">💰 Precio Mayorista desde 5 pares</div>
+            <div class="benefit-item">⭐ Las mejores marcas</div>
+            <div class="benefit-item">🔥 Stock permanente</div>
+        </div>
+    </div>
+
+    <!-- BRAND CAROUSEL -->
+    <div class="brands-section">
+        <div class="brands-label">⚡ Selecciona la marca que estás buscando</div>
+        <div class="brands-carousel-wrapper">
+            <button class="carousel-nav prev" onclick="scrollCarousel(-1)">&#8249;</button>
+            <div class="brands-carousel" id="brands-carousel">
+                <button class="brand-circle-btn active" onclick="filterByBrand('Todos', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&auto=format&fit=crop" alt="Todos">
+                    </div>
+                    <span class="brand-circle-label">Todos</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Jordan', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=200&auto=format&fit=crop" alt="Jordan">
+                    </div>
+                    <span class="brand-circle-label">Jordan</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Under Armour', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&auto=format&fit=crop" alt="Under">
+                    </div>
+                    <span class="brand-circle-label">Under</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Adidas', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=200&auto=format&fit=crop" alt="Adidas">
+                    </div>
+                    <span class="brand-circle-label">Adidas</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Nike', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&auto=format&fit=crop" alt="Nike">
+                    </div>
+                    <span class="brand-circle-label">Nike</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('New Balance', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=200&auto=format&fit=crop" alt="New Balance">
+                    </div>
+                    <span class="brand-circle-label">New Balance</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Off White', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&auto=format&fit=crop" alt="Off White">
+                    </div>
+                    <span class="brand-circle-label">Off White</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Dolce Gabbana', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1614026480209-cd9934144671?w=200&auto=format&fit=crop" alt="Dolce Gabbana">
+                    </div>
+                    <span class="brand-circle-label">Dolce Gabbana</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Gorras', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1552346154-21d32810baa3?w=200&auto=format&fit=crop" alt="Gorras">
+                    </div>
+                    <span class="brand-circle-label">Gorras</span>
+                </button>
+                <button class="brand-circle-btn" onclick="filterByBrand('Puma', this)">
+                    <div class="brand-circle-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=200&auto=format&fit=crop" alt="Puma">
+                    </div>
+                    <span class="brand-circle-label">Puma</span>
+                </button>
+            </div>
+            <button class="carousel-nav next" onclick="scrollCarousel(1)">&#8250;</button>
+        </div>
+    </div>
+
+    <!-- CATÁLOGO -->
+    <section class="store-section" id="catalogo">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">COLECCIÓN<br><span style="color:var(--primary)">ACTUAL</span></h2>
+                <p class="section-subtitle">El mejor calzado premium para impulsar tu negocio.</p>
+            </div>
+            <div class="filters-and-sort">
+                <select class="sort-select" id="sort-select" onchange="sortProducts(this.value)">
+                    <option value="default">⚡ Relevancia</option>
+                    <option value="price-asc">💰 Precio: Menor a Mayor</option>
+                    <option value="price-desc">💰 Precio: Mayor a Menor</option>
+                    <option value="new">🔥 Más Nuevos</option>
+                    <option value="popular">⭐ Más Comprados</option>
+                </select>
+            </div>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- MODAL PRODUCTO -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-gallery">
+                <img src="" alt="" class="modal-main-img" id="modal-img">
+                <div class="modal-thumbs" id="modal-thumbs"></div>
+            </div>
+            <div class="modal-info">
+                <div class="modal-brand" id="modal-brand">MARCA</div>
+                <h2 class="modal-title" id="modal-name">Nombre del Producto</h2>
+
+                <div class="price-comparison">
+                    <div class="price-box">
+                        <div class="price-box-label">Precio Unitario</div>
+                        <div class="price-box-value" id="modal-price-unit">$0</div>
+                        <div class="price-box-note">1-4 pares</div>
+                    </div>
+                    <div class="price-box wholesale">
+                        <div class="price-box-label">⚡ Precio Mayorista</div>
+                        <div class="price-box-value" id="modal-price">$0</div>
+                        <div class="price-box-note">Desde 5 pares</div>
+                    </div>
+                </div>
+
+                <div class="option-title">TALLA (EUR) <span id="modal-stock-status">Selecciona talla</span></div>
+                <div class="size-grid" id="modal-sizes"></div>
+
+                <div class="option-title">CANTIDAD</div>
+                <div class="qty-wrapper">
+                    <button class="qty-btn" onclick="changeModalQty(-1)">−</button>
+                    <input type="text" class="qty-input" id="modal-qty" value="5" readonly>
+                    <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+                </div>
+                <div class="wholesale-notice">⚡ Pedido mínimo para precio mayorista: 5 pares totales en carrito.</div>
+                <button class="btn-add-cart" id="modal-add-btn" disabled onclick="addToCart()">Selecciona una talla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRITO LATERAL -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>TU ORDEN <span id="cart-header-count" style="color:var(--primary); font-size:18px; font-family:var(--font-sans);">(0)</span></h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+
+        <div style="padding: 16px 24px 0;">
+            <div class="progress-text" id="progress-text">Faltan 5 pares para el mínimo mayorista</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="cart-items" id="cart-items"></div>
+
+        <!-- Métodos de Pago -->
+        <div class="payment-section">
+            <div class="payment-label">Método de Pago</div>
+            <div class="payment-methods">
+                <button class="payment-btn" id="pm-nequi" onclick="setPayment('nequi')">
+                    <span class="pm-emoji">💜</span>
+                    <span class="pm-name">Nequi</span>
+                </button>
+                <button class="payment-btn" id="pm-daviplata" onclick="setPayment('daviplata')">
+                    <span class="pm-emoji">🔴</span>
+                    <span class="pm-name">Daviplata</span>
+                </button>
+                <button class="payment-btn" id="pm-bancolombia" onclick="setPayment('bancolombia')">
+                    <span class="pm-emoji">🟡</span>
+                    <span class="pm-name">Bancolombia</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary-row"><span>Subtotal:</span> <span id="cart-subtotal">$0</span></div>
+            <div class="cart-summary-total"><span>TOTAL A PAGAR:</span> <span id="cart-total">$0</span></div>
+
+            <div class="delivery-selector">
+                <div class="delivery-option active" id="del-recogida" onclick="setDelivery('recogida')">
+                    <h4>🏪 Recoger Local</h4>
+                    <p>B/Quilla (Gratis)</p>
+                </div>
+                <div class="delivery-option" id="del-domicilio" onclick="setDelivery('domicilio')">
+                    <h4>🚚 Domicilio</h4>
+                    <p>Costo por interno</p>
+                </div>
+            </div>
+
+            <button class="btn-whatsapp" id="checkout-btn" disabled onclick="sendToWhatsApp()">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Confirmar por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <!-- UBICACIÓN / MAPA -->
+    <section class="location-section" id="ubicacion">
+        <div class="location-grid">
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.1!2d-74.7782!3d10.985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zCalle+35+45B-50%2C+Barranquilla%2C+Colombia!5e0!3m2!1ses!2sco!4v1!5m2!1ses!2sco"
+                    allowfullscreen loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Olympus Store Ubicación">
+                </iframe>
+            </div>
+            <div class="location-info">
+                <h2>ENCUÉNTRA<br>NOS <span>⚡</span></h2>
+                <div class="location-details">
+                    <div class="location-detail-item">
+                        <div class="location-detail-icon">📍</div>
+                        <div class="location-detail-text">
+                            <strong>Dirección</strong>
+                            Calle 35 #45B-50, Piso 2, Local 208<br>Barranquilla, Colombia 080003
+                        </div>
+                    </div>
+                    <div class="location-detail-item">
+                        <div class="location-detail-icon">🕐</div>
+                        <div class="location-detail-text">
+                            <strong>Horario de Atención</strong>
+                            Lunes a Sábado: 9:00 AM – 6:00 PM<br>Domingo: Solo por WhatsApp
+                        </div>
+                    </div>
+                    <div class="location-detail-item">
+                        <div class="location-detail-icon">📞</div>
+                        <div class="location-detail-text">
+                            <strong>Contacto Directo</strong>
+                            +57 300 000 0000<br>ventas@olympusstore.com
+                        </div>
+                    </div>
+                </div>
+                <a href="https://whatsapp.com/channel/0029VanPHoICxoAvMlCZYN0W" target="_blank" class="whatsapp-premium-btn">
+                    <span class="wp-icon">💎</span>
+                    <div class="wp-text-wrap">
+                        <span class="wp-text-title">Únete a nuestro Grupo Premium</span>
+                        <span class="wp-text-sub">Accede a precios exclusivos, preventas y lanzamientos por WhatsApp</span>
+                    </div>
+                    <span class="wp-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co/Hw37Z44/imagen-2026-04-14-022022200.png" alt="Olympus Store">
+                <p>Somos tu socio comercial estratégico. Proveemos zapatillas de alta gama para que potencies tu negocio en toda Colombia.</p>
+                <a href="https://whatsapp.com/channel/0029VanPHoICxoAvMlCZYN0W" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#fff; padding:10px 20px; border-radius:50px; font-weight:700; font-size:13px;">
+                    💎 Grupo Premium WhatsApp
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-title">Enlaces</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Atención al Cliente</h3>
+                <ul class="footer-links">
+                    <li>📞 +57 300 000 0000</li>
+                    <li>✉️ ventas@olympusstore.com</li>
+                    <li>Lun-Sáb: 9AM – 6PM</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Ubicación</h3>
+                <p style="color:var(--gray); font-size:13px; line-height:1.8;">
+                    📍 Calle 35 #45B-50<br>
+                    Piso 2, Local 208<br>
+                    Barranquilla, Colombia
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Olympus Store. Todos los derechos reservados.</span>
+            <span style="color:var(--primary)">⚡ Powered by Olympus</span>
+        </div>
+    </footer>
+
+    <script>
+        // =====================================================================
+        // BASE DE DATOS LOCAL DE PRODUCTOS
+        // =====================================================================
+        let DB_PRODUCTS = JSON.parse(localStorage.getItem('olympus_products') || 'null') || [
+            {
+                id: 'p1', brand: 'Adidas', name: 'Adidas Suite Classic White', price: 110000, priceWholesale: 95000, isNew: true, sold: 148,
+                images: ['https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&auto=format&fit=crop'],
+                stock: { '36': 10, '37': 15, '38': 20, '39': 15, '40': 5, '41': 0, '42': 2 }
+            },
+            {
+                id: 'p2', brand: 'Nike', name: 'Nike Air Max 270 React', price: 135000, priceWholesale: 118000, isNew: false, sold: 234,
+                images: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&auto=format&fit=crop'],
+                stock: { '38': 5, '39': 8, '40': 12, '41': 20, '42': 15, '43': 5 }
+            },
+            {
+                id: 'p3', brand: 'Jordan', name: 'Air Jordan 1 Retro High', price: 160000, priceWholesale: 140000, isNew: true, sold: 412,
+                images: ['https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=600&auto=format&fit=crop'],
+                stock: { '39': 2, '40': 5, '41': 8, '42': 10, '43': 4, '44': 2 }
+            },
+            {
+                id: 'p4', brand: 'Nike', name: 'Nike Dunk Low Panda', price: 145000, priceWholesale: 128000, isNew: false, sold: 189,
+                images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&auto=format&fit=crop'],
+                stock: { '36': 5, '37': 5, '38': 10, '39': 10, '40': 0 }
+            },
+            {
+                id: 'p5', brand: 'Adidas', name: 'Yeezy Boost 350 V2', price: 180000, priceWholesale: 158000, isNew: true, sold: 321,
+                images: ['https://images.unsplash.com/photo-1614026480209-cd9934144671?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1552346154-21d32810baa3?w=600&auto=format&fit=crop'],
+                stock: { '40': 5, '41': 10, '42': 15, '43': 5 }
+            },
+            {
+                id: 'p6', brand: 'Nike', name: 'Nike Air Force 1 White', price: 120000, priceWholesale: 105000, isNew: false, sold: 567,
+                images: ['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop','https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=600&auto=format&fit=crop'],
+                stock: { '36': 20, '37': 20, '38': 30, '39': 30, '40': 20, '41': 20, '42': 20 }
+            }
+        ];
+
+        let cart = [];
+        let deliveryMethod = 'recogida';
+        let paymentMethod = '';
+        const MIN_WHOLESALE_QTY = 5;
+        let activeProduct = null;
+        let activeSize = null;
+        let activeQty = 5;
+        let currentFilter = 'Todos';
+        let currentSort = 'default';
+        let currentSearch = '';
+
+        const formatMoney = (amount) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(amount);
+
+        const showToast = (message) => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3500);
+        };
+
+        // =====================================================================
+        // RENDERIZADO DEL CATÁLOGO
+        // =====================================================================
+        const renderCatalog = () => {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            let filtered = currentFilter === 'Todos' ? [...DB_PRODUCTS] : DB_PRODUCTS.filter(p => p.brand === currentFilter);
+
+            if (currentSearch) {
+                filtered = filtered.filter(p =>
+                    p.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    p.brand.toLowerCase().includes(currentSearch.toLowerCase())
+                );
+            }
+
+            // Sort
+            if (currentSort === 'price-asc') filtered.sort((a,b) => a.priceWholesale - b.priceWholesale);
+            else if (currentSort === 'price-desc') filtered.sort((a,b) => b.priceWholesale - a.priceWholesale);
+            else if (currentSort === 'new') filtered.sort((a,b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+            else if (currentSort === 'popular') filtered.sort((a,b) => (b.sold||0) - (a.sold||0));
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--gray);"><div style="font-size:60px;margin-bottom:16px;">⚡</div><p style="font-size:1.2rem;">No encontramos productos con ese criterio</p></div>';
+                return;
+            }
+
+            filtered.forEach(p => {
+                const totalStock = Object.values(p.stock).reduce((a,b) => a+b, 0);
+                if (totalStock === 0) return;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.onclick = () => openModal(p.id);
+
+                const badgeHtml = p.isNew ? `<div class="product-badge">NUEVO ⚡</div>` : '';
+                card.innerHTML = `
+                    <div class="product-image-wrapper">
+                        ${badgeHtml}
+                        <img src="${p.images[0]}" alt="${p.name}" class="product-img-main" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">${p.brand}</div>
+                        <h3 class="product-title">${p.name}</h3>
+                        <div class="product-price-row">
+                            <div class="product-price">${formatMoney(p.priceWholesale || p.price)}</div>
+                            <span class="product-price-wholesale">⚡ Mayor</span>
+                        </div>
+                        <div class="product-sold-tag">🔥 ${p.sold || 0} vendidos</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        };
+
+        window.filterByBrand = (brand, el) => {
+            currentFilter = brand;
+            document.querySelectorAll('.brand-circle-btn').forEach(b => b.classList.remove('active'));
+            if (el) el.classList.add('active');
+            renderCatalog();
+        };
+
+        window.sortProducts = (value) => {
+            currentSort = value;
+            renderCatalog();
+        };
+
+        window.searchProducts = (value) => {
+            currentSearch = value;
+            renderCatalog();
+        };
+
+        // =====================================================================
+        // CARRUSEL DE MARCAS
+        // =====================================================================
+        window.scrollCarousel = (dir) => {
+            const carousel = document.getElementById('brands-carousel');
+            carousel.scrollBy({ left: dir * 200, behavior: 'smooth' });
+        };
+
+        // =====================================================================
+        // MODAL DE PRODUCTO
+        // =====================================================================
+        const openModal = (productId) => {
+            activeProduct = DB_PRODUCTS.find(p => p.id === productId);
+            activeSize = null;
+            activeQty = MIN_WHOLESALE_QTY;
+
+            document.getElementById('modal-name').textContent = activeProduct.name;
+            document.getElementById('modal-brand').textContent = activeProduct.brand;
+            document.getElementById('modal-price').textContent = formatMoney(activeProduct.priceWholesale || activeProduct.price);
+            document.getElementById('modal-price-unit').textContent = formatMoney(activeProduct.price);
+            document.getElementById('modal-qty').value = activeQty;
+            document.getElementById('modal-stock-status').textContent = 'Selecciona talla';
+
+            const mainImg = document.getElementById('modal-img');
+            mainImg.src = activeProduct.images[0];
+
+            const thumbsContainer = document.getElementById('modal-thumbs');
+            thumbsContainer.innerHTML = '';
+            activeProduct.images.forEach((imgSrc, idx) => {
+                const thumb = document.createElement('img');
+                thumb.src = imgSrc;
+                thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                thumb.onclick = (e) => {
+                    mainImg.src = imgSrc;
+                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                };
+                thumbsContainer.appendChild(thumb);
+            });
+
+            const sizesContainer = document.getElementById('modal-sizes');
+            sizesContainer.innerHTML = '';
+            const allSizes = ['36','37','38','39','40','41','42','43','44'];
+            allSizes.forEach(size => {
+                const stock = activeProduct.stock[size] || 0;
+                const btn = document.createElement('button');
+                btn.className = 'size-btn';
+                btn.textContent = size;
+                if (stock === 0) {
+                    btn.disabled = true;
+                } else {
+                    btn.onclick = (e) => {
+                        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        activeSize = size;
+                        if (stock < activeQty) activeQty = stock;
+                        document.getElementById('modal-qty').value = activeQty;
+                        document.getElementById('modal-stock-status').textContent = `Stock: ${stock} pares`;
+                        checkModalAddBtn();
+                    };
+                }
+                sizesContainer.appendChild(btn);
+            });
+
+            checkModalAddBtn();
+            document.getElementById('product-modal').classList.add('active');
+        };
+
+        const closeModal = () => document.getElementById('product-modal').classList.remove('active');
+
+        window.changeModalQty = (delta) => {
+            if (!activeSize) { showToast("Selecciona una talla primero"); return; }
+            const maxStock = activeProduct.stock[activeSize];
+            let newQty = activeQty + delta;
+            if (newQty < 1) newQty = 1;
+            if (newQty > maxStock) { showToast(`Stock máximo: ${maxStock} pares`); newQty = maxStock; }
+            activeQty = newQty;
+            document.getElementById('modal-qty').value = activeQty;
+            checkModalAddBtn();
+        };
+
+        const checkModalAddBtn = () => {
+            const btn = document.getElementById('modal-add-btn');
+            const price = activeProduct.priceWholesale || activeProduct.price;
+            if (activeSize) {
+                btn.disabled = false;
+                btn.textContent = `⚡ Agregar ${activeQty} pares — ${formatMoney(price * activeQty)}`;
+            } else {
+                btn.disabled = true;
+                btn.textContent = 'Selecciona una talla';
+            }
+        };
+
+        // =====================================================================
+        // CARRITO
+        // =====================================================================
+        window.addToCart = () => {
+            if (!activeProduct || !activeSize) return;
+            const price = activeProduct.priceWholesale || activeProduct.price;
+            const existing = cart.find(item => item.id === activeProduct.id && item.size === activeSize);
+
+            if (existing) {
+                const newTotal = existing.qty + activeQty;
+                if (newTotal > activeProduct.stock[activeSize]) { showToast("Stock insuficiente"); return; }
+                existing.qty = newTotal;
+            } else {
+                cart.push({ id: activeProduct.id, name: activeProduct.name, price, image: activeProduct.images[0], size: activeSize, qty: activeQty });
+            }
+
+            showToast(`${activeQty} pares agregados`);
+            closeModal();
+            updateCart();
+            document.getElementById('cart-sidebar').classList.add('active');
+        };
+
+        window.removeFromCart = (index) => { cart.splice(index, 1); updateCart(); };
+
+        const updateCart = () => {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let totalQty = 0, subtotal = 0;
+
+            cart.forEach((item, idx) => {
+                totalQty += item.qty;
+                subtotal += item.price * item.qty;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-meta">Talla: ${item.size} | Cantidad: ${item.qty}</div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div class="cart-item-price">${formatMoney(item.price * item.qty)}</div>
+                                <button class="cart-item-remove" onclick="removeFromCart(${idx})">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('cart-count').textContent = totalQty;
+            document.getElementById('cart-header-count').textContent = `(${totalQty})`;
+            document.getElementById('cart-subtotal').textContent = formatMoney(subtotal);
+            document.getElementById('cart-total').textContent = formatMoney(subtotal);
+
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const percent = Math.min((totalQty / MIN_WHOLESALE_QTY) * 100, 100);
+            progressBar.style.width = `${percent}%`;
+
+            if (totalQty === 0) {
+                progressText.textContent = `Tu carrito está vacío.`;
+                progressText.style.color = 'var(--gray)';
+                progressBar.style.background = 'var(--gray)';
+                checkoutBtn.disabled = true;
+                checkoutBtn.innerHTML = 'Carrito Vacío';
+            } else if (totalQty < MIN_WHOLESALE_QTY) {
+                const diff = MIN_WHOLESALE_QTY - totalQty;
+                progressText.textContent = `⚡ Faltan ${diff} pares para precio mayorista`;
+                progressText.style.color = 'var(--danger)';
+                progressBar.style.background = 'var(--danger)';
+                checkoutBtn.disabled = true;
+                checkoutBtn.innerHTML = `Faltan ${diff} pares`;
+            } else {
+                progressText.textContent = `⚡ ¡Precio mayorista activado!`;
+                progressText.style.color = 'var(--success)';
+                progressBar.style.background = 'var(--success)';
+                checkoutBtn.disabled = false;
+                checkoutBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Enviar Pedido por WhatsApp`;
+            }
+        };
+
+        window.toggleCart = () => document.getElementById('cart-sidebar').classList.toggle('active');
+
+        window.setDelivery = (method) => {
+            deliveryMethod = method;
+            document.getElementById('del-recogida').classList.remove('active');
+            document.getElementById('del-domicilio').classList.remove('active');
+            document.getElementById(`del-${method}`).classList.add('active');
+        };
+
+        window.setPayment = (method) => {
+            paymentMethod = method;
+            document.querySelectorAll('.payment-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`pm-${method}`).classList.add('active');
+        };
+
+        window.sendToWhatsApp = () => {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            if (totalQty < MIN_WHOLESALE_QTY) return;
+
+            const phoneNumber = '573001234567';
+            let msg = '⚡ *NUEVO PEDIDO MAYORISTA — OLYMPUS STORE* ⚡\n\n';
+            msg += 'Hola, quiero confirmar el siguiente pedido:\n\n';
+
+            let granTotal = 0;
+            cart.forEach((item, i) => {
+                const sub = item.price * item.qty;
+                granTotal += sub;
+                msg += `*${i+1}. ${item.name}*\n`;
+                msg += `👟 Talla: ${item.size} | 📦 Cant: ${item.qty} pares\n`;
+                msg += `💵 Subtotal: ${formatMoney(sub)}\n\n`;
+            });
+
+            msg += `═══════════════════════\n`;
+            msg += `📦 *TOTAL PARES:* ${totalQty}\n`;
+            msg += `💰 *GRAN TOTAL:* ${formatMoney(granTotal)}\n`;
+            msg += `═══════════════════════\n\n`;
+            msg += `🚛 *Entrega:* ${deliveryMethod === 'recogida' ? 'Recoger en Tienda (B/Quilla)' : 'Envío a Domicilio'}\n`;
+            if (paymentMethod) msg += `💳 *Pago:* ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\n`;
+            msg += `\nQuedo atento a la confirmación. ¡Gracias!`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        // =====================================================================
+        // EFECTOS DE SCROLL
+        // =====================================================================
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Close modal on overlay click
+        document.getElementById('product-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('product-modal')) closeModal();
+        });
+
+        // =====================================================================
+        // INICIALIZACIÓN
+        // =====================================================================
+        renderCatalog();
+        updateCart();
+
+        // Sync products from admin localStorage
+        window.addEventListener('storage', () => {
+            const saved = localStorage.getItem('olympus_products');
+            if (saved) {
+                DB_PRODUCTS = JSON.parse(saved);
+                renderCatalog();
+            }
+        });
+    </script>
+</body>
+</html>
