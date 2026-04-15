@@ -11,22 +11,22 @@
            1. VARIABLES Y RESET
            ========================================================================== */
         :root {
-            --primary: #f7e300;
-            --primary-hover: #e0ce00;
-            --black: #0a0a0a;
-            --dark-gray: #1a1a1a;
-            --dark-card: #141414;
-            --gray: #888888;
-            --light-gray: #222222;
-            --white: #ffffff;
-            --border: #2a2a2a;
+            --primary: #f7c600;
+            --primary-hover: #e2b500;
+            --black: #f6f8fc;
+            --dark-gray: #ffffff;
+            --dark-card: #ffffff;
+            --gray: #667085;
+            --light-gray: #eaecf0;
+            --white: #101828;
+            --border: #d0d5dd;
             --danger: #ff3b30;
             --success: #34c759;
             --font-sans: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Bebas Neue', 'Impact', sans-serif;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.6);
+            --shadow-sm: 0 2px 8px rgba(16,24,40,0.08);
+            --shadow-md: 0 8px 24px rgba(16,24,40,0.12);
+            --shadow-lg: 0 20px 40px rgba(16,24,40,0.16);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             --radius-sm: 8px;
             --radius-md: 16px;
@@ -56,7 +56,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://i.ibb.co/M5NGprTk/imagen-2026-04-14-202705374.png') center/cover no-repeat;
-            opacity: 0.12;
+            opacity: 0.05;
             z-index: 0;
             pointer-events: none;
         }
@@ -69,7 +69,7 @@
         img { max-width: 100%; height: auto; display: block; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-track { background: #e4e7ec; }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
 
         /* ==========================================================================
@@ -111,27 +111,27 @@
            ========================================================================== */
         .header {
             position: fixed; top: 0; left: 0; width: 100%;
-            background: rgba(10,10,10,0.92);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(16px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(247,227,0,0.15);
+            border-bottom: 1px solid rgba(16,24,40,0.08);
             transition: var(--transition);
         }
-        .header.scrolled { padding: 5px 0; box-shadow: 0 4px 30px rgba(247,227,0,0.08); }
+        .header.scrolled { padding: 5px 0; box-shadow: 0 4px 30px rgba(16,24,40,0.1); }
 
         .nav-container {
             max-width: 1400px; margin: 0 auto; padding: 12px 40px;
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .logo img { height: 50px; transition: var(--transition); filter: drop-shadow(0 0 8px rgba(247,227,0,0.3)); }
-        .header.scrolled .logo img { height: 38px; }
+        .logo img { height: 64px; transition: var(--transition); filter: drop-shadow(0 4px 10px rgba(16,24,40,0.15)); }
+        .header.scrolled .logo img { height: 48px; }
 
         .nav-links { display: flex; gap: 40px; }
         .nav-links a {
             font-weight: 700; font-size: 13px;
             text-transform: uppercase; letter-spacing: 2px;
-            color: #ccc; position: relative; transition: color 0.3s;
+            color: #344054; position: relative; transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary); }
         .nav-links a::after {
@@ -179,23 +179,23 @@
            4. HERO SECTION
            ========================================================================== */
         .hero {
-            padding-top: 90px;
-            min-height: 100vh;
+            padding-top: 86px;
+            min-height: 84vh;
             display: flex; align-items: center;
-            background: linear-gradient(160deg, #0a0a0a 0%, #111100 50%, #0a0a0a 100%);
+            background: linear-gradient(145deg, #ffffff 0%, #fef7d7 45%, #fff4bf 100%);
             position: relative; overflow: hidden;
         }
 
         .hero-bolt-bg {
             position: absolute; top: -5%; left: -5%;
             font-size: 80vw; color: var(--primary);
-            opacity: 0.025; font-family: var(--font-display);
+            opacity: 0.06; font-family: var(--font-display);
             line-height: 1; pointer-events: none; z-index: 0;
             animation: heroBoltPulse 6s ease-in-out infinite;
         }
         @keyframes heroBoltPulse {
-            0%, 100% { opacity: 0.02; transform: scale(1); }
-            50% { opacity: 0.04; transform: scale(1.02); }
+            0%, 100% { opacity: 0.04; transform: scale(1); }
+            50% { opacity: 0.08; transform: scale(1.02); }
         }
 
         .hero-container {
@@ -207,14 +207,14 @@
         .hero-tag {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(247,227,0,0.1); border: 1px solid rgba(247,227,0,0.3);
-            color: var(--primary); padding: 6px 16px; border-radius: var(--radius-full);
+            color: #7a5a00; padding: 6px 16px; border-radius: var(--radius-full);
             font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
             margin-bottom: 24px; animation: fadeInUp 0.6s both;
         }
 
         .hero-content h1 {
             font-family: var(--font-display);
-            font-size: 6rem; line-height: 0.92;
+            font-size: 5.1rem; line-height: 0.9;
             margin-bottom: 24px; letter-spacing: 2px;
             animation: fadeInUp 0.6s 0.1s both;
         }
@@ -224,7 +224,7 @@
         }
 
         .hero-content p {
-            font-size: 1.15rem; color: #aaa;
+            font-size: 1.15rem; color: #475467;
             margin-bottom: 40px; max-width: 480px; line-height: 1.7;
             animation: fadeInUp 0.6s 0.2s both;
         }
@@ -247,14 +247,45 @@
         .btn-secondary {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             padding: 16px 36px;
-            background: transparent; color: var(--white);
+            background: transparent; color: #1d2939;
             font-weight: 700; font-size: 14px;
             text-transform: uppercase; letter-spacing: 2px;
             border-radius: var(--radius-full);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(16,24,40,0.18);
             transition: var(--transition);
         }
-        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+        .btn-secondary:hover { border-color: var(--primary); color: #7a5a00; transform: translateY(-3px); }
+
+        .hero-sales-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 26px;
+            max-width: 560px;
+            animation: fadeInUp 0.6s 0.35s both;
+        }
+        .hero-sales-point {
+            background: rgba(255,255,255,0.75);
+            border: 1px solid rgba(16,24,40,0.08);
+            border-radius: 14px;
+            padding: 12px 10px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 24px rgba(16,24,40,0.08);
+        }
+        .hero-sales-point strong {
+            display: block;
+            font-size: 1rem;
+            color: #101828;
+            line-height: 1.1;
+        }
+        .hero-sales-point span {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #475467;
+        }
 
         /* Hero video floating card */
         .hero-image { position: relative; display: flex; justify-content: center; }
@@ -264,11 +295,11 @@
             background: var(--dark-card);
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(247,227,0,0.2);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(247,227,0,0.08);
+            border: 1px solid rgba(16,24,40,0.1);
+            box-shadow: 0 24px 48px rgba(16,24,40,0.15), 0 0 30px rgba(247,198,0,0.15);
             animation: heroCardFloat 6s ease-in-out infinite;
             width: 100%;
-            max-width: 520px;
+            max-width: 560px;
         }
 
         @keyframes heroCardFloat {
@@ -277,14 +308,14 @@
         }
 
         .hero-video-card iframe, .hero-video-card video {
-            width: 100%; aspect-ratio: 16/9; display: block; border: none;
+            width: 100%; aspect-ratio: 16/9; display: block; border: none; object-fit: cover;
         }
 
         .hero-video-card-glow {
             position: absolute; bottom: -30px; left: 50%;
             transform: translateX(-50%);
             width: 70%; height: 60px;
-            background: rgba(247,227,0,0.2);
+            background: rgba(247,198,0,0.28);
             filter: blur(30px);
             border-radius: 50%;
             pointer-events: none;
@@ -292,17 +323,17 @@
 
         .bolt-badge {
             position: absolute; top: -15px; right: -15px;
-            background: var(--primary); color: var(--black);
+            background: var(--primary); color: #7a5a00;
             border-radius: 50%; width: 60px; height: 60px;
             display: flex; align-items: center; justify-content: center;
             font-size: 28px; font-family: var(--font-display);
-            box-shadow: 0 0 20px rgba(247,227,0,0.5);
+            box-shadow: 0 0 20px rgba(247,198,0,0.4);
             z-index: 2;
             animation: badgePulse 2s ease-in-out infinite;
         }
         @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(247,227,0,0.5); }
-            50% { box-shadow: 0 0 40px rgba(247,227,0,0.8); }
+            0%, 100% { box-shadow: 0 0 20px rgba(247,198,0,0.5); }
+            50% { box-shadow: 0 0 40px rgba(247,198,0,0.8); }
         }
 
         @keyframes fadeInUp {
@@ -755,7 +786,10 @@
             .nav-links { display: none; }
             .search-bar-header { display: none; }
             .section-title { font-size: 2.5rem; }
-            .hero-content h1 { font-size: 4rem; }
+            .hero-content h1 { font-size: 3.6rem; }
+            .hero-sales-points { grid-template-columns: 1fr; max-width: 340px; margin: 22px auto 0; }
+            .hero-video-card { max-width: 100%; border-radius: 18px; }
+            .bolt-badge { width: 52px; height: 52px; font-size: 24px; top: -10px; right: -10px; }
             .footer-grid { grid-template-columns: 1fr; }
             .cart-sidebar { width: 100%; right: -100%; }
         }
@@ -795,22 +829,32 @@
             <div class="hero-content">
                 <div class="hero-tag">⚡ Mayoristas de Calzado Premium</div>
                 <h1>EL IMPERIO DEL<br><span class="highlight">CALZADO</span><br>MAYORISTA</h1>
-                <p>Distribución oficial de zapatillas urbanas y deportivas de alta gama. Emprende con el mejor margen de ganancia. Pedidos desde 5 pares.</p>
+                <p>Distribución oficial de zapatillas urbanas y deportivas de alta gama. Emprende con el mejor margen de ganancia. 𝙈𝙖́𝙨 𝙦𝙪𝙚 𝙪𝙣𝙤𝙨 𝙎𝙣𝙚𝙖𝙠𝙚𝙧𝙨, 𝙚𝙨 𝙪𝙣 𝙚𝙨𝙩𝙞𝙡𝙤 𝙙𝙚 𝙫𝙞𝙙𝙖</p>
                 <div class="hero-buttons">
                     <a href="#catalogo" class="btn-primary">⚡ Ver Catálogo</a>
                     <a href="#ubicacion" class="btn-secondary">📍 Encuéntranos</a>
+                </div>
+                <div class="hero-sales-points">
+                    <div class="hero-sales-point">
+                        <strong>+200</strong>
+                        <span>Referencias activas</span>
+                    </div>
+                    <div class="hero-sales-point">
+                        <strong>Desde 5</strong>
+                        <span>Pares mayorista</span>
+                    </div>
+                    <div class="hero-sales-point">
+                        <strong>Top marcas</strong>
+                        <span>Nike, Jordan, Adidas</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="hero-video-card">
                     <div class="bolt-badge">⚡</div>
-                    <iframe
-                        src="https://res.cloudinary.com/dtautqcnk/video/upload/v1776220546/Somos_bodega_mayorista_manejamos_m%C3%A1s_de_200_referencias_disponibles_escr%C3%ADbenos_a_nuestro_w_csaji4.mp4"
-                        allowfullscreen
-                        allow="autoplay; fullscreen"
-                        title="Olympus Store Video"
-                        loading="lazy">
-                    </iframe>
+                    <video autoplay muted loop playsinline controls preload="metadata" title="Olympus Store Video">
+                        <source src="https://res.cloudinary.com/dtautqcnk/video/upload/v1776220546/Somos_bodega_mayorista_manejamos_m%C3%A1s_de_200_referencias_disponibles_escr%C3%ADbenos_a_nuestro_w_csaji4.mp4" type="video/mp4">
+                    </video>
                     <div class="hero-video-card-glow"></div>
                 </div>
             </div>
@@ -1439,7 +1483,7 @@
             const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
             if (totalQty < MIN_WHOLESALE_QTY) return;
 
-            const phoneNumber = '573001234567';
+            const phoneNumber = '573242010287';
             let msg = '⚡ *NUEVO PEDIDO MAYORISTA — OLYMPUS STORE* ⚡\n\n';
             msg += 'Hola, quiero confirmar el siguiente pedido:\n\n';
 
